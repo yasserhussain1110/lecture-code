@@ -17,10 +17,8 @@ struct TreeNode {
 
 bool isValidBST(TreeNode* root, int left, int right) {
   if (root == nullptr) return true;
-  bool ans1 = root->val > left && root->val < right;
-  bool ans = ans1 && isValidBST(root->left, left, min(right, root->val)) &&
+  return root->val > left && root->val < right && isValidBST(root->left, left, min(right, root->val)) &&
     isValidBST(root->right, max(left, root->val), right);
-  return ans;
 }
 
 bool isValidBST(TreeNode* root) {
